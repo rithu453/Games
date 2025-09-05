@@ -99,8 +99,32 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
       >
+        {/* Back button */}
+        <motion.div
+          className="w-full max-w-6xl flex justify-start px-4 pt-6"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <motion.button
+            onClick={() => window.open('https://charakan.online', '_self')}
+            className="group flex items-center gap-3 px-6 py-3 bg-moonstone-dark/20 backdrop-blur-lg border border-aurora-green/30 rounded-xl text-aurora-green hover:bg-aurora-green/10 transition-all duration-300"
+            whileHover={{ scale: 1.05, x: -5 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.span 
+              className="text-xl"
+              animate={{ x: [0, -3, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              ←
+            </motion.span>
+            <span className="font-medium">Back to Charakan</span>
+          </motion.button>
+        </motion.div>
+
         <motion.header 
-          className="pt-16 pb-12 text-center"
+          className="pt-8 pb-12 text-center"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
