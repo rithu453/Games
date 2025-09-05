@@ -245,7 +245,7 @@ const BoredomBuster = () => {
         transition={{ delay: 0.7 }}
       >
         <p className="text-moonstone-gray/80 text-sm italic">
-          "The oracle reveals what your soul already knows - sometimes we just need a gentle nudge toward mindfulness."
+          &ldquo;The oracle reveals what your soul already knows - sometimes we just need a gentle nudge toward mindfulness.&rdquo;
         </p>
       </motion.div>
     </div>

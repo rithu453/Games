@@ -147,7 +147,7 @@ const PomodoroTimer = () => {
         {Object.entries(modes).map(([key, modeData]) => (
           <motion.button
             key={key}
-            onClick={() => switchMode(key as any)}
+            onClick={() => switchMode(key as keyof typeof modes)}
             className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
               mode === key
                 ? 'bg-aurora-green text-moonstone-dark'

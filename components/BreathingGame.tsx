@@ -163,7 +163,7 @@ export default function BreathingGame() {
     if (!isActive) return;
 
     let raf: number;
-    let start = performance.now();
+    const start = performance.now();
     
     const animate = (now: number) => {
       const elapsed = now - start;

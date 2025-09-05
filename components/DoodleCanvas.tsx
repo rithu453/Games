@@ -182,7 +182,7 @@ export default function DoodleCanvas() {
     const point: DrawPoint = {
       x: pos.x,
       y: pos.y,
-      pressure: (e as any).pressure || 0.5,
+      pressure: (e.nativeEvent as PointerEvent).pressure || 0.5,
       timestamp: Date.now(),
     };
 
@@ -212,7 +212,7 @@ export default function DoodleCanvas() {
     const point: DrawPoint = {
       x: pos.x,
       y: pos.y,
-      pressure: (e as any).pressure || 0.5,
+      pressure: (e.nativeEvent as PointerEvent).pressure || 0.5,
       timestamp: Date.now(),
     };
 

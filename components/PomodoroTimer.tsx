@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Text, Sphere } from '@react-three/drei';
+import { Float, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 import { useAudioStore } from '@/lib/store';
 
@@ -27,7 +27,7 @@ function TimerIsland({ progress, isFocus }: { progress: number; isFocus: boolean
     if (waterRef.current) {
       waterRef.current.position.y = -2 + (progress * 3);
       if (waterRef.current.material && 'uniforms' in waterRef.current.material) {
-        (waterRef.current.material as any).uniforms.time.value = state.clock.elapsedTime;
+        (waterRef.current.material as THREE.ShaderMaterial).uniforms.time.value = state.clock.elapsedTime;
       }
     }
   });

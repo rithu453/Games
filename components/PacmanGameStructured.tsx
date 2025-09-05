@@ -291,7 +291,7 @@ export default function PacmanGame2D() {
       powerModeTimer: 0,
       level: 1,
       fruitsEaten: 0,
-      highScore: localStorage.getItem('pacman-high-score') ? parseInt(localStorage.getItem('pacman-high-score')!) : 0,
+      highScore: typeof window !== 'undefined' && localStorage.getItem('pacman-high-score') ? parseInt(localStorage.getItem('pacman-high-score')!) : 0,
       ghostModeTimer: 7000, // 7 seconds in chase mode initially
       ghostMode: 'chase' as const,
       tunnel: false,
@@ -415,7 +415,7 @@ export default function PacmanGame2D() {
   const checkCollisions = () => {
     setGameState(prev => {
       const pacKey = `${prev.pacmanPos.x},${prev.pacmanPos.y}`;
-      let newState = { ...prev };
+      const newState = { ...prev };
       
       // Check dot collection with enhanced feedback
       if (newState.dots.has(pacKey)) {
@@ -588,7 +588,7 @@ export default function PacmanGame2D() {
       
       // Update timers
       setGameState(prev => {
-        let newState = { ...prev };
+        const newState = { ...prev };
         
         // Power mode timer
         if (newState.powerMode && newState.powerModeTimer > 0) {
@@ -669,7 +669,9 @@ export default function PacmanGame2D() {
     setGameState(prev => {
       const newHighScore = Math.max(prev.score, prev.highScore);
       if (newHighScore > prev.highScore) {
-        localStorage.setItem('pacman-high-score', newHighScore.toString());
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('pacman-high-score', newHighScore.toString());
+        }
         return { ...prev, highScore: newHighScore };
       }
       return prev;
@@ -686,7 +688,9 @@ export default function PacmanGame2D() {
     const newScore = gameState.score;
     const newHighScore = Math.max(gameState.highScore, newScore);
     if (newHighScore > gameState.highScore) {
-      localStorage.setItem('pacman-high-score', newHighScore.toString());
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('pacman-high-score', newHighScore.toString());
+      }
     }
     
     setGameState({
